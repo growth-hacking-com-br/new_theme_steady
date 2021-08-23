@@ -1,0 +1,16 @@
+.screen-65 {
+	min-height: 65vh;
+}
+.min-h-350px {
+	min-height: 350px;
+}
+.min-h-150px {
+	min-height: 150px;
+}
+
+.max-width-auto {
+	max-width: 130%;
+	@include media-breakpoint-down(lg) {
+		max-width: 100%;
+	}
+}

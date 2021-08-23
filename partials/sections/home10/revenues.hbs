@@ -1,0 +1,72 @@
+<section class="py-6 py-md-9 py-lg-11 bg-gray-100">
+    <div class="container pie-chart-container">
+        <div class="row justify-content-center text-center section-title">
+            <div class="col-lg-5">
+                <label class="bg-primary-light small font-w-500 px-4 py-2 text-primary rounded-pill mb-3">Our Revenues</label>
+                <h3 class="h2 m-0">The most effective way to track your revenues</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 col-sm-6 text-center my-3">
+                <div>
+                    <span class="pie-chart"
+                        data-lineCap="round"
+                        data-size="200"
+                        data-percent="25"
+                        data-trackcolor="#e0edff"
+                        data-width="15"
+                        data-color="#ffc107">
+                        <span class="middle h2 m-0"></span>
+                    </span>
+                    <p class="mt-4 bg-warning d-inline-block text-white font-w-600 px-3 py-1 rounded-pill">Yellow Progress</p>
+                </div>
+            </div> <!-- col -->
+            <div class="col-md-6 col-lg-3 col-sm-6 text-center my-3">
+                <div>
+                    <span class="pie-chart"
+                        data-lineCap="round"
+                        data-size="200"
+                        data-percent="85"
+                        data-trackcolor="#e0edff"
+                        data-width="15"
+                        data-color="#17a2b8">
+                        <span class="middle h2 m-0"></span>
+                    </span>
+                    <p class="mt-4 bg-info d-inline-block text-white font-w-600 px-3 py-1 rounded-pill">Blue Progress</p>
+                </div>
+            </div> <!-- col -->
+            <div class="col-md-6 col-lg-3 col-sm-6 text-center my-3">
+                <div>
+                    <span class="pie-chart"
+                        data-lineCap="round"
+                        data-size="200"
+                        data-percent="77"
+                        data-trackcolor="#e0edff"
+                        data-width="15"
+                        data-color="#dc3545">
+                        <span class="middle h2 m-0"></span>
+                    </span>
+                    <p class="mt-4 bg-danger d-inline-block text-white font-w-600 px-3 py-1 rounded-pill">Red Progress</p>
+                </div>
+            </div> <!-- col -->
+            <div class="col-md-6 col-lg-3 col-sm-6 text-center my-3">
+                <div>
+                    <span class="pie-chart"
+                        data-lineCap="round"
+                        data-size="200"
+                        data-percent="65"
+                        data-trackcolor="#e0edff"
+                        data-width="15"
+                        data-color="#28a745">
+                        <span class="middle h2 m-0"></span>
+                    </span>
+                    <p class="mt-4 bg-success d-inline-block text-white font-w-600 px-3 py-1 rounded-pill">Green Progress</p>
+                </div>
+            </div> <!-- col -->
+        </div> <!-- row -->
+    </div>
+</section>
+
+{{#contentFor "scripts"}}
+    <script async defer src="{{asset "built/js/pie-chart.js"}}"></script>
+{{/contentFor}}

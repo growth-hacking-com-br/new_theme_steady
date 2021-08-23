@@ -1,0 +1,38 @@
+{{!< default}}
+
+{{> header}}
+
+{{#post}}
+    <main id="site-main" class="site-main">
+        {{> blog-detail-heading}}
+        <section class="py-6 py-md-9 py-lg-11 pt-3 pt-lg-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="post-article">
+                            {{content}}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-5 mt-lg-0 ps-xl-8">
+                        {{#if @labs.members}}
+                            <div class="card blog-subscribe">
+                                <div class="card-header bg-transparent">
+                                    <span class="h5 m-0">Subscribe to {{@site.title}}</span>
+                                </div>
+                                <div class="card-body">
+                                    {{> subscribe-form}}
+                                </div>
+                            </div>
+                        {{/if}}
+                        {{!--{{> blog-search}}--}}
+                        {{> blog-recent-post}}
+                        {{> blog-tag}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {{!-- Email subscribe form at the bottom of the page --}}
+{{/post}}
+
+{{> footer}}

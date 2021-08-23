@@ -1,0 +1,30 @@
+{{> feature-background}}
+    <div class="container h-100">
+        <div class="row justify-content-center align-items-center p-5 h-100">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-4 mb-4 text-white">{{title}}</h1>
+
+                {{#if custom_excerpt}}
+                    <p class="lead m-0 text-white">{{custom_excerpt}}</p>
+                {{/if}}
+
+                <div class="d-none d-md-flex align-items-center mt-4 justify-content-center text-left">
+                    <div class="avatar avatar-48 me-2">
+                        {{#if profile_image}}
+                            <img> src="{{img_url profile_image size="xs"}}" alt="{{name}}"/>
+                        {{else}}
+                            {{> "icons/avatar"}}
+                        {{/if}}
+                    </div>
+                    {{#primary_author}}
+                        <div class="ps-3">
+                            <p class="my-0">
+                                <a class="h6 text-white text-decoration-none" href="{{url}}">{{name}}</a>
+                            </p>
+                        </div>
+                    {{/primary_author}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
