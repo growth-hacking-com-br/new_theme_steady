@@ -1,11 +1,20 @@
-# GhostStead Ghost theme
+# Spin: a Bootstrap-based Ghost theme
 
 A SaaS-focused Ghost theme built with [Bootstrap](https://getbootstrap.com/), the most popular HTML5 framework.
 
-**Goals**:
-* Pass gscan
+**Functionality**:
+* Pass gscan without warnings
 * Integrate Bootstrap with minimal impact to site performance.
 * Use SASS for CSS.
+* No jQuery.  All async/defer Javascript.
+* Professionally maintained and documented.
+
+**Features**:
+* Subscribe and contact forms.
+* Full-text search.
+* Responsive theme images.
+* Sane/documented/reusable build environment
+
 
 ## Prerequisites
 * NodeJS (v12.13.x)
@@ -38,4 +47,4 @@ After `zip` completes successfully, install the resulting bundle from the
 
 ***
 
-This repository is maintained by [GhostStead](https://www.ghoststead.com).
+This repository is maintained by [Mindspun](https://www.mindspun.com).

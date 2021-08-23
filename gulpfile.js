@@ -3,17 +3,26 @@ const pump = require('pump');
 
 // gulp plugins and utils
 const livereload = require('gulp-livereload');
+const beeper = require('beeper');
 const zip = require('gulp-zip');
 const sass = require('gulp-sass');
+const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const clean = require('gulp-clean');
-const webpack = require('webpack-stream');
-const named = require('vinyl-named');
 
 function serve(done) {
     livereload.listen();
     done();
 }
+
+const handleError = (done) => {
+    return function (err) {
+        if (err) {
+            beeper().then(() => {});
+        }
+        return done(err);
+    };
+};
 
 function cleaner(done) {
     pump([
@@ -31,7 +40,7 @@ function hbs(done) {
 
 function scss(done) {
     pump([
-        gulp.src('scss/*.scss', {sourcemaps: true}),
+        gulp.src('assets/scss/*.scss', {sourcemaps: true}),
         sass({
             outputStyle: 'compressed'
         }),
@@ -42,21 +51,17 @@ function scss(done) {
 
 function js(done) {
     pump([
-        gulp.src('js/*.js'),
-        named(),
-        webpack(require('./webpack.config')),
-        gulp.dest('assets/built/js/'),
-        livereload()
-    ], done);
-}
-
-function vendor(done) {
-    pump([
-        gulp.src('node_modules/ghost-theme-utils/dist/js/*.js'),
+        gulp.src([
+            'node_modules/ghost-theme-utils/dist/js/ghost-theme-utils.js',
+            'node_modules/elasticlunr/elasticlunr.js',
+            'assets/js/lib/*.js',
+            'assets/js/main.js'
+        ], {sourcemaps: true}),
+        concat('main.min.js'),
         uglify(),
-        gulp.dest('assets/built/js/'),
+        gulp.dest('assets/built/', {sourcemaps: '.'}),
         livereload()
-    ], done);
+    ], handleError(done));
 }
 
 function zipper(done) {
@@ -68,21 +73,21 @@ function zipper(done) {
         gulp.src([
             '**',
             '!node_modules', '!node_modules/**',
-            '!dist', '!dist/**'
+            '!dist', '!dist/**',
+            '!scss'
         ]),
         zip(filename),
         gulp.dest(targetDir)
     ], done);
 }
 
-const scssWatcher = () => gulp.watch(['scss/**'], scss);
+const scssWatcher = () => gulp.watch(['assets/scss/**'], scss);
 const hbsWatcher = () => gulp.watch(['*.hbs', 'partials/**/*.hbs'], hbs);
-const jsWatcher = () => gulp.watch(['js/**'], js);
+const jsWatcher = () => gulp.watch(['assets/js/**'], js);
 const watcher = gulp.parallel(scssWatcher, hbsWatcher, jsWatcher);
-const build = gulp.series(scss, js, vendor);
-const dev = gulp.series(build, serve, watcher);
+const build = gulp.series(scss, js);
 
 exports.build = build;
 exports.zip = gulp.series(build, zipper);
-exports.default = dev;
+exports.default = gulp.series(build, serve, watcher);
 exports.clean = cleaner;

@@ -4,8 +4,41 @@
 
 {{#post}}
     <main id="site-main" class="site-main">
-        {{> blog-detail-heading}}
-        <section class="py-6 py-md-9 py-lg-11 pt-3 pt-lg-6">
+        {{!-- Banner --}}
+        {{> banner background=feature_image}}
+        <div class="container h-100">
+            <div class="row justify-content-center align-items-center p-5 h-100">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-4 mb-4 text-white">{{title}}</h1>
+
+                    {{#if custom_excerpt}}
+                        <p class="lead m-0 text-white">{{custom_excerpt}}</p>
+                    {{/if}}
+
+                    <div class="d-none d-md-flex align-items-center mt-4 justify-content-center text-left">
+                        <div class="avatar avatar-48">
+                            {{#if profile_image}}
+                                <img> src="{{img_url profile_image size="xs"}}" alt="{{name}}"/>
+                            {{else}}
+                                {{> "icons/avatar"}}
+                            {{/if}}
+                        </div>
+                        {{#primary_author}}
+                            <div class="ps-2">
+                                <p class="my-0">
+                                    <a class="h6 text-white text-decoration-none" href="{{url}}">{{name}}</a>
+                                </p>
+                            </div>
+                        {{/primary_author}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        {{!-- Banner --}}
+
+
+        <section class="py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
@@ -13,25 +46,73 @@
                             {{content}}
                         </div>
                     </div>
-                    <div class="col-lg-4 mt-5 mt-lg-0 ps-xl-8">
-                        
-                            <div class="card blog-subscribe">
-                                <div class="card-header bg-transparent">
-                                    <span class="h5 m-0">Subscribe to {{@site.title}}</span>
+                    <div class="col-lg-4 mt-5 mt-lg-0 ps-xl-5">
+                        <div class="card blog-subscribe mb-3">
+                            <div class="card-header bg-transparent">
+                                <span class="h5 m-0">Subscribe to {{@site.title}}</span>
+                            </div>
+                            <div class="card-body">
+                                {{> subscribe-form}}
+                            </div>
+                        </div>
+
+                        <div class="card mb-3 d-none">
+                            <div class="card-header bg-transparent">
+                                <span class="h5">Search</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-row input-group">
+                                    <input class="form-control fs-6 form-control-lg rounded-0 search-field"
+                                           placeholder="Search"/>
+                                    <button class="btn btn-primary flex-shrink-0 rounded-0 border-0 py-0 px-3 search-button">
+                                        <span class="fs-4 lh-1 text-light">{{> icons/search}}</span>
+                                    </button>
                                 </div>
-                                <div class="card-body">
-                                    {{> subscribe-form}}
+                                <div class="search-result"></div>
+                            </div>
+                        </div>
+
+                        {{!-- Recent blog posts --}}
+                        {{#get "posts" order="published_at desc" limit="4"}}
+                            <div class="card mb-3 border-bottom-0">
+                                <div class="card-header bg-transparent">
+                                    <span class="h5 m-0">Recent Posts</span>
+                                </div>
+                                <div class="list-group">
+                                    {{#foreach posts}}
+                                        <a href="{{url}}"
+                                           class="border-bottom p-3 d-flex text-decoration-none text-reset">
+                                            {{#if feature_image}}
+                                                <img class="rounded me-2 img-fluid" width="48"
+                                                     src="{{img_url feature_image}}" alt="{{title}}">
+                                            {{/if}}
+                                            <p class="m-0 col">{{title}}</p>
+                                        </a>
+                                    {{/foreach}}
                                 </div>
                             </div>
-                        {{!--{{> blog-search}}--}}
-                        {{> blog-recent-post}}
-                        {{> blog-tag}}
+                        {{/get}}
+                        {{!-- Recent blog posts --}}
+
+                        {{!-- Blog tags --}}
+                        <div class="card">
+                            <div class="card-header bg-transparent">
+                                <span class="h5 m-0">Tags</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="nav">
+                                    {{#foreach tags}}
+                                        <a href="{{url}}" title="{{name}}"
+                                           class="text-decoration-none small bg-light text-dark d-block mt-1 me-2 rounded-pill py-1 px-3 tag {{slug}}">{{name}}</a>
+                                    {{/foreach}}
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- Blog tags --}}
+
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    {{!-- Email subscribe form at the bottom of the page --}}
 {{/post}}
-
-{{> footer}}

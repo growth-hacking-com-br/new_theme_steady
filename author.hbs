@@ -3,68 +3,71 @@
 {{> header}}
 
 <main id="site-main" class="site-main">
-    {{#author}}
     {{!-- Everything inside the #author tags pulls data from the author --}}
-        <header>
-            {{> header-background background=@site.cover_image}} {{!--Special header-image.hbs partial to generate the background image--}}
-            <div class="container py-5">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-md-10">
-                        <div class="card card-body">
-                            <div class="author-header d-flex p-lg-4">
-                                {{#if profile_image}}
-                                    <img class="avatar avatar-128 rounded-circle me-2" src="{{profile_image}}"
-                                         alt="{{name}}"/>
-                                {{else}}
-                                    <span class="avatar avatar-128 rounded-circle me-2">{{> "icons/avatar"}}</span>
+    
+
+    <section class="container post-feed py-5">
+        <div class="row">
+            <div class="col-lg-3 col-xl-2 pe-xl-4 pb-5">
+                <div class="sticky-lg-top">
+                    {{#author}}
+                        <div class="author-header">
+                            {{#if profile_image}}
+                                <img width="140" height="140" class="rounded-circle me-2" src="{{profile_image}}"
+                                     alt="{{name}}"/>
+                            {{else}}
+                                <span class="rounded-circle me-2">{{> "icons/avatar"}}</span>
+                            {{/if}}
+                            <div class="author-header-content pt-4">
+                                <h1 class="h5">{{name}}</h1>
+                                {{#if bio}}
+                                    <p class="small author-bio text-muted">{{bio}}</p>
                                 {{/if}}
-                                <div class="author-header-content col pl-4 text-left">
-                                    <h1 class="h1">{{name}}</h1>
-                                    {{#if bio}}
-                                        <h2 class="author-bio h5">{{bio}}</h2>
+                                <div class="author-meta">
+                                    {{#if location}}
+                                        <div class="author-location">{{location}}</div>
                                     {{/if}}
-                                    <div class="author-meta">
-                                        {{#if location}}
-                                            <div class="author-location">{{location}}</div>
+                                    <div class="author-stats pb-3">
+                                        {{plural ../pagination.total empty='No posts' singular='% post'
+                                                 plural='% posts'}}
+                                    </div>
+                                    <div class="nav">
+                                        {{#if website}}
+                                            <span class="author-social-link me-1"><a
+                                                    class="text-white p-2 me-1 lh-1 d-inline-flex bg-info"
+                                                    href="{{website}}"
+                                                    target="_blank"
+                                                    rel="noopener">{{> icons/link}}</a></span>
                                         {{/if}}
-                                        <div class="author-stats pb-3">
-                                            {{plural ../pagination.total empty='No posts' singular='% post'
-                                                     plural='% posts'}}
-                                        </div>
-                                        <div class="nav">
-                                            {{#if website}}
-                                                <span class="author-social-link me-1"><a class="avatar avatar-32 rounded-circle bg-info text-white me-1 p-2" href="{{website}}"
-                                                                                         target="_blank"
-                                                                                         rel="noopener">{{> icons/themify/link}}</a></span>
-                                            {{/if}}
-                                            {{#if twitter}}
-                                                <span class="author-social-link me-1"><a class="avatar avatar-32 rounded-circle bg-info text-white me-1 p-2" href="{{twitter_url}}"
-                                                                                         target="_blank"
-                                                                                         rel="noopener">{{> icons/themify/twitter-alt}}</a></span>
-                                            {{/if}}
-                                            {{#if facebook}}
-                                                <span class="author-social-link me-1"><a class="avatar avatar-32 rounded-circle bg-info text-white me-1 p-2" href="{{facebook_url}}"
-                                                                                         target="_blank"
-                                                                                         rel="noopener">{{> icons/themify/facebook}}</a></span>
-                                            {{/if}}
-                                        </div>
+                                        {{#if twitter}}
+                                            <span class="author-social-link me-1"><a
+                                                    class="text-white p-2 me-1 lh-1 d-inline-flex bg-info"
+                                                    href="{{twitter_url}}"
+                                                    target="_blank"
+                                                    rel="noopener">{{> icons/twitter}}</a></span>
+                                        {{/if}}
+                                        {{#if facebook}}
+                                            <span class="author-social-link me-1"><a
+                                                    class="text-white p-2 me-1 lh-1 d-inline-flex bg-info"
+                                                    href="{{facebook_url}}"
+                                                    target="_blank"
+                                                    rel="noopener">{{> icons/facebook}}</a></span>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {{/author}}
                 </div>
             </div>
-        </header>
-    {{/author}}
-
-    <section class="container post-feed mt-5">
-        <div class="row row-cols-1 row-cols-md-3">
-            {{#foreach posts limit=9}}
-                {{> "post-card"}}
-            {{/foreach}}
+            <div class="col-lg-9 col-xl-10">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-2">
+                    {{#foreach posts limit=9}}
+                        {{> "post-card"}}
+                    {{/foreach}}
+                </div>
+            </div>
         </div>
     </section>
 </main>
 
-{{> footer }}

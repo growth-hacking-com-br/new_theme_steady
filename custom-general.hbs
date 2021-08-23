@@ -1,0 +1,30 @@
+{{!< default}}
+
+{{!-- The main content area --}}
+
+{{#post}}
+    {{> header}}
+    <main id="site-main" class="site-main py-4 my-lg-5 general-content">
+        <section class="pb-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-xl-7">
+                        <h1 class="h1 mb-3">{{title}}</h1>
+                        <p class="lead">{{excerpt}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-xl-7">
+                        <div class="d-flex flex-column align-items-center">
+                            {{content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{{/post}}
