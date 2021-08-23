@@ -6330,11 +6330,10 @@ fieldset:disabled .btn {
     align-items: center;
     justify-content: flex-end;
     padding: .75rem;
-    border-top: 1px solid #eff2f7;
+    border-top: 1px solid #dee2e6;
     border-bottom-right-radius: calc(.3rem - 1px);
     border-bottom-left-radius: calc(.3rem - 1px)
 }
-
 .modal-footer>* {
     margin: .25rem
 }
@@ -7297,7 +7296,7 @@ fieldset:disabled .btn {
 }
 
 .border {
-    border: 1px solid #eff2f7 !important
+    border: 1px solid #dee2e6 !important
 }
 
 .border-0 {
@@ -7305,7 +7304,7 @@ fieldset:disabled .btn {
 }
 
 .border-top {
-    border-top: 1px solid #eff2f7 !important
+    border-top: 1px solid #dee2e6 !important
 }
 
 .border-top-0 {
@@ -7313,7 +7312,7 @@ fieldset:disabled .btn {
 }
 
 .border-end {
-    border-right: 1px solid #eff2f7 !important
+    border-right: 1px solid #dee2e6 !important
 }
 
 .border-end-0 {
@@ -7321,7 +7320,7 @@ fieldset:disabled .btn {
 }
 
 .border-bottom {
-    border-bottom: 1px solid #eff2f7 !important
+    border-bottom: 1px solid #dee2e6 !important
 }
 
 .border-bottom-0 {
@@ -7329,7 +7328,7 @@ fieldset:disabled .btn {
 }
 
 .border-start {
-    border-left: 1px solid #eff2f7 !important
+    border-left: 1px solid #dee2e6 !important
 }
 
 .border-start-0 {
@@ -7337,7 +7336,7 @@ fieldset:disabled .btn {
 }
 
 .border-primary {
-    border-color: #03c !important
+    border-color: #0d6efd !important
 }
 
 .border-secondary {
@@ -7349,7 +7348,7 @@ fieldset:disabled .btn {
 }
 
 .border-info {
-    border-color: #15db95 !important
+    border-color: #0dcaf0 !important
 }
 
 .border-warning {
@@ -7361,11 +7360,11 @@ fieldset:disabled .btn {
 }
 
 .border-light {
-    border-color: #f1f6fd !important
+    border-color: #f8f9fa !important
 }
 
 .border-dark {
-    border-color: #171347 !important
+    border-color: #212529 !important
 }
 
 .border-white {
@@ -8607,8 +8606,8 @@ fieldset:disabled .btn {
 }
 
 .py-5 {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important
 }
 
 .py-6 {
@@ -8979,6 +8978,7 @@ fieldset:disabled .btn {
 }
 
 .text-white-50 {
+    --bs-text-opacity: 1;
     color: rgba(255, 255, 255, 0.5) !important
 }
 
