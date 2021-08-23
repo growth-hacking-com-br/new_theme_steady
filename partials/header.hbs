@@ -23,8 +23,40 @@
             <div class="navbar-collapse collapse" id="navbar-collapse-toggle">
                 <ul class="nav navbar-nav ps-lg-4">
                     {{navigation}}
+
+                    {{>mega-menu}}
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+
+{{#contentFor "scripts"}}
+    <script>
+        (function () {
+            "use strict";
+
+            var header = document.getElementById('main-header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.children[0].classList.add('bg-primary');
+                    header.classList.add('fixed-header');
+                } else {
+                    header.children[0].classList.remove('bg-primary');
+                    header.classList.remove('fixed-header');
+                }
+            });
+
+            document.querySelectorAll('#main-header a.nav-link').forEach(function (element) {
+                var href = element.getAttribute('href');
+                if (href && href.endsWith('#pages')) {
+                    element.classList.add('dropdown-toggle')
+                    element.classList.add('mm-in')
+                    element.classList.add('mm-mega');
+                    element.setAttribute('data-bs-target', '#megaMenu');
+                    element.setAttribute('data-bs-toggle', 'collapse');
+                }
+            });
+        })();
+    </script>
+    {{/contentFor}}
