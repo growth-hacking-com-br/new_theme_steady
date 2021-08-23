@@ -1,0 +1,17 @@
+$white: #fff !default;
+
+$navbar-dark-color:                 $white !default;
+$navbar-dark-hover-color:           rgba($white, .75) !default;
+
+@import "bootstrap";
+
+@import "../../node_modules/ghost-theme-utils/dist/css/style";
+
+@import "../../node_modules/jarallax/dist/jarallax";
+
+// btn-accent
+// This definition prevents 'flicker' from the JS-generated class.
+.btn-accent {
+    color: white;
+    background-color: var(--ghost-accent-color);
+}

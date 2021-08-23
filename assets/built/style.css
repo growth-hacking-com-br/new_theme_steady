@@ -16941,11 +16941,11 @@ fieldset:disabled .btn {
 }
 
 .kg-bookmark-card .kg-bookmark-container {
-    box-shadow: 0px 3px 10px 0px rgba(38, 59, 94, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     display: flex;
     min-height: 148px;
     border-radius: 3px;
-    color: #718096
+    color: #212529
 }
 
 @media (max-width: 575.98px) {
@@ -16955,7 +16955,7 @@ fieldset:disabled .btn {
 }
 
 .kg-bookmark-title {
-    color: #171347;
+    color: #212529;
     font-weight: 600
 }
 
